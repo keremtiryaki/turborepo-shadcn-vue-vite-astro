@@ -7,12 +7,14 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "shadcn-vue": "workspace:*"
+    "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.8",
     "@astrojs/check": "^0.9.4",
-    "typescript": "^5.6.3"
+    "@astrojs/vue": "^4.5.2",
+    "astro": "^4.16.8",
+    "shadcn-vue": "workspace:*",
+    "typescript": "^5.6.3",
+    "vue": "^3.5.12"
   }
 }
