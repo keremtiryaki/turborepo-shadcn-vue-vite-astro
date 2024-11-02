@@ -2,19 +2,23 @@
 import "shadcn-vue/src/assets/index.css";
 import { Button } from "shadcn-vue/src/components/ui/button";
 import AlertSample from "../components/AlertSample.vue";
+import Dashboard from "shadcn-vue/src/dashboard/Example.vue";
+import AutoForm from "shadcn-vue/src/AutoForm/Example.vue";
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <h1>Astro</h1>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<!-- <h1>Astro</h1>
     <Button>Hello World</Button>
-    <AlertSample client:load />
-  </body>
+    -->
+		<!-- <Dashboard client:load /> -->
+		<AutoForm client:load />
+	</body>
 </html>
