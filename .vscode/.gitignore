@@ -1,0 +1,5 @@
+# misc
+.DS_Store
+
+# **/node_modules/**, **/.turbo/**, **/dist/**, **/.astro/**, **/.wrangler/**, .git/**
+FULL_Search.code-search
