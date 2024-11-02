@@ -61,7 +61,16 @@ importers:
         version: 3.5.12(typescript@5.6.3)
 
   apps/vite-vue:
-    dependencies:
+    devDependencies:
+      '@types/node':
+        specifier: ^20.11.24
+        version: 20.17.5
+      '@vitejs/plugin-vue':
+        specifier: ^5.1.4
+        version: 5.1.4(vite@5.4.10(@types/node@20.17.5)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      autoprefixer:
+        specifier: ^10.4.20
+        version: 10.4.20(postcss@8.4.47)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -80,31 +89,21 @@ importers:
       tailwind-merge:
         specifier: ^2.5.4
         version: 2.5.4
-      tailwindcss-animate:
-        specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@3.4.14)
-      vue:
-        specifier: ^3.5.12
-        version: 3.5.12(typescript@5.6.3)
-    devDependencies:
-      '@types/node':
-        specifier: ^20.11.24
-        version: 20.17.5
-      '@vitejs/plugin-vue':
-        specifier: ^5.1.4
-        version: 5.1.4(vite@5.4.10(@types/node@20.17.5)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
-      autoprefixer:
-        specifier: ^10.4.20
-        version: 10.4.20(postcss@8.4.47)
       tailwindcss:
         specifier: ^3.4.14
         version: 3.4.14
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@3.4.14)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
       vite:
         specifier: ^5.4.10
         version: 5.4.10(@types/node@20.17.5)(terser@5.36.0)
+      vue:
+        specifier: ^3.5.12
+        version: 3.5.12(typescript@5.6.3)
       vue-tsc:
         specifier: ^2.1.8
         version: 2.1.10(typescript@5.6.3)

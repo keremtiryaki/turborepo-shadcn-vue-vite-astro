@@ -8,7 +8,7 @@
 		"build": "rm -rf ./dist && vue-tsc -b && vite build",
 		"preview": "vite preview"
 	},
-	"dependencies": {
+	"devDependencies": {
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
 		"lucide-vue-next": "^0.454.0",
@@ -16,9 +16,7 @@
 		"tailwind-merge": "^2.5.4",
 		"tailwindcss-animate": "^1.0.7",
 		"vue": "^3.5.12",
-		"shadcn-vue": "workspace:*"
-	},
-	"devDependencies": {
+		"shadcn-vue": "workspace:*",
 		"@types/node": "^20.11.24",
 		"@vitejs/plugin-vue": "^5.1.4",
 		"autoprefixer": "^10.4.20",
