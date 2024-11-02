@@ -1,7 +1,9 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    // Astro-Vue
     "jsx": "preserve",
+    // Shadcn-Vue
     "baseUrl": ".",
     "paths": {
       "@/*": [
