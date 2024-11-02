@@ -6,9 +6,7 @@
     // Shadcn-Vue
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./node_modules/shadcn-vue/src/*"
-      ]
+      "@/*": ["./node_modules/shadcn-vue/src/*"]
     }
   }
 }

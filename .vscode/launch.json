@@ -6,7 +6,7 @@
       "name": "turbo-dev",
       "request": "launch",
       "type": "node-terminal"
-    },
+    }
     /*/
     pnpm dev works now. no need to have these
     {

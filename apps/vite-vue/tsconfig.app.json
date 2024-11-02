@@ -4,11 +4,7 @@
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
     /* Bundler mode */
     "moduleResolution": "Bundler",
@@ -26,14 +22,8 @@
     // Shadcn-Vue
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./node_modules/shadcn-vue/src/*"
-      ]
+      "@/*": ["./node_modules/shadcn-vue/src/*"]
     }
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

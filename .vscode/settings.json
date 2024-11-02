@@ -4,5 +4,5 @@
   "editor.formatOnPaste": true,
   "editor.formatOnType": true,
   "editor.formatOnSaveMode": "file",
-  "typescript.tsserver.experimental.enableProjectDiagnostics": false, // filter: !**/node_modules/**
+  "typescript.tsserver.experimental.enableProjectDiagnostics": false // filter: !**/node_modules/**
 }
