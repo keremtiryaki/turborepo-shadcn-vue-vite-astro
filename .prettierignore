@@ -1,0 +1,13 @@
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+
+.gitignore
+.vscode
+.idea
+.DS_Store
+.npmrc
+.prettierignore
+
+*.svg
