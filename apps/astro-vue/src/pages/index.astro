@@ -1,6 +1,7 @@
 ---
 import '../styles/globals.css'
-import { Button } from 'shadcn-vue'
+// import { Button } from 'shadcn-vue'
+import AlertSample from '../components/AlertSample.vue'
 ---
 
 <html lang="en">
@@ -13,6 +14,7 @@ import { Button } from 'shadcn-vue'
 	</head>
 	<body>
 		<h1>Astro</h1>
-		<Button>Hello World</Button>
+		<!-- <Button>Hello World</Button> -->
+		<AlertSample client:load />
 	</body>
 </html>
