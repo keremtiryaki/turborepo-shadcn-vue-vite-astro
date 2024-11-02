@@ -9,8 +9,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from 'shadcn-vue'
-import { Button } from 'shadcn-vue'
+} from 'shadcn-vue/src/components/ui/alert-dialog'
+import { Button } from 'shadcn-vue/src/components/ui/button'
 </script>
 
 <template>
