@@ -1,12 +1,32 @@
 <script setup lang="ts">
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast/use-toast";
+import { useDialog } from "@/components/ui/dialog/use-dialog";
+import SampleComponent from "./SampleComponent.vue";
 
 const { toast } = useToast();
+const dialog = useDialog();
+
+const showDialog = async () => {
+  try {
+    const result = await dialog.show({
+      component: SampleComponent,
+      props: {
+        // Props to pass to your component
+        someData: "example",
+      },
+      title: "Dialog Title",
+      description: "Optional description",
+      closeable: true, // default true
+    });
+    console.log("Dialog result:", result);
+  } catch (err) {
+    console.log("Dialog cancelled");
+  }
+};
 </script>
 
 <template>
-
   <Button
     variant="outline"
     @click="
@@ -20,6 +40,7 @@ const { toast } = useToast();
       }
     "
   >
-    Add to calendar
+    Show toast
   </Button>
+  <Button @click="showDialog">Show dialog</Button>
 </template>

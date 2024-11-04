@@ -6,4 +6,5 @@ export { default as DialogFooter } from './DialogFooter.vue'
 export { default as DialogHeader } from './DialogHeader.vue'
 export { default as DialogScrollContent } from './DialogScrollContent.vue'
 export { default as DialogTitle } from './DialogTitle.vue'
-export { default as DialogTrigger } from './DialogTrigger.vue'
+export { default as DialogTrigger } from "./DialogTrigger.vue";
+export { default as DialogProvider } from "./DialogProvider.vue";
