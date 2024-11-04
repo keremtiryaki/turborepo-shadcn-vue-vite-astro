@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { ref } from "vue";
 
-const someData = ref("");
+const props = defineProps<{
+  someData: string;
+}>();
+
+const localData = ref(props.someData);
 
 const emit = defineEmits<{
   close: [result: any];
@@ -10,7 +15,7 @@ const emit = defineEmits<{
 }>();
 
 const confirm = () => {
-  emit("close", { success: true, data: "some result" });
+  emit("close", { success: true, data: localData.value });
 };
 
 const cancel = () => {
@@ -20,9 +25,9 @@ const cancel = () => {
 
 <template>
   <div class="space-y-4">
-    <p>Your dialog content here</p>
-    <input type="text" v-model="someData" />
-    <p>{{ someData }}</p>
+    <!-- <p>Your dialog content here</p> -->
+    <Input type="email" v-model="localData" placeholder="Email" />
+    <p>{{ localData }}</p>
 
     <div class="flex justify-end gap-2">
       <Button @click="cancel">Cancel</Button>

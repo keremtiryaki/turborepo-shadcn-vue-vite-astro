@@ -8,22 +8,35 @@ const { toast } = useToast();
 const dialog = useDialog();
 
 const showDialog = async () => {
-  try {
-    const result = await dialog.show({
-      component: SampleComponent,
-      props: {
-        // Props to pass to your component
-        someData: "example",
-      },
-      title: "non closeable Dialog Title",
-      description: "Optional description",
-      closeable: false, // default true
-    });
-    console.log("Dialog result:", result);
-  } catch (err) {
-    console.error(err);
-    console.log("Dialog cancelled");
-  }
+  const id1 = dialog.show({
+    component: SampleComponent,
+    props: {
+      someData: "example 111",
+    },
+    title: "Dialog Title",
+    description: "Optional description",
+    closeable: false,
+    onSuccess: (result) => {
+      console.log("Dialog success:", result);
+    },
+    onCancel: () => {
+      console.log("Dialog cancelled");
+    },
+  });
+
+  const id2 = dialog.show({
+    component: SampleComponent,
+    props: {
+      someData: "example 222",
+    },
+    closeable: true,
+  });
+  // setTimeout(() => {
+  // }, 2e3);
+
+  // setTimeout(() => {
+  //   dialog.close(id, "forced to close");
+  // }, 2e3);
 };
 </script>
 
