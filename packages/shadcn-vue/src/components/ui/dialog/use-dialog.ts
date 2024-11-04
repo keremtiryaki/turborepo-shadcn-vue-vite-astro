@@ -1,7 +1,7 @@
 import { Component, ref, markRaw } from "vue";
-import { defineComponent } from "vue";
 
 export interface DialogOptions {
+  id?: string;
   component?: Component;
   html?: string;
   props?: Record<string, any>;
@@ -30,37 +30,37 @@ const state = ref<DialogState>({
 
 export function useDialog() {
   const show = (options: DialogOptions): string => {
-    const id = `dialog-${Math.random().toString(36).substring(2, 15)}`;
+    const id = options.id || `dialog-${Math.random().toString(36).substring(2, 15)}`;
 
     function getComponent() {
-      let component: Component | undefined;
-      if (options.html) {
-        console.warn(`dialog html requires alias to be set in vite config, {"vite":{"resolve":{"alias":{"vue":"vue/dist/vue.esm-bundler.js"}}}}`);
-        component = defineComponent({
-          template: options.html,
-        });
-      } else if (options.component) {
-        component = options.component;
-      }
-      return component ? markRaw(component) : undefined;
+      // import { defineComponent } from "vue";
+      // let component: Component | undefined;
+      // if (options.html) {
+      //   console.warn(`dialog html requires alias to be set in vite config, {"vite":{"resolve":{"alias":{"vue":"vue/dist/vue.esm-bundler.js"}}}}`);
+      //   component = defineComponent({
+      //     template: options.html,
+      //   });
+      // } else if (options.component) {
+      //   component = options.component;
+      // }
+      // return component ? markRaw(component) : undefined;
+      return options.component ? markRaw(options.component) : undefined;
     }
 
-    setTimeout(() => {
-      state.value.dialogs.push({
-        id,
-        isOpen: true,
-        options: {
-          ...options,
-          component: getComponent(),
-          onSuccess: (result) => {
-            options.onSuccess?.(result);
-          },
-          onCancel: () => {
-            options.onCancel?.();
-          }
+    state.value.dialogs.push({
+      id,
+      isOpen: true,
+      options: {
+        ...options,
+        component: getComponent(),
+        onSuccess: (result) => {
+          options.onSuccess?.(result);
         },
-      });
-    }, 100);
+        onCancel: () => {
+          options.onCancel?.();
+        }
+      },
+    });
 
     return id;
   };
@@ -87,10 +87,15 @@ export function useDialog() {
     state.value.dialogs.splice(dialogIndex, 1);
   };
 
+  const getDialog = (id: string) => {
+    return state.value.dialogs.find(d => d.id === id);
+  };
+
   return {
     state,
     show,
     close,
     cancel,
+    getDialog,
   };
 }

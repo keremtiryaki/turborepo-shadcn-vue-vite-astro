@@ -1,6 +1,6 @@
 ---
 import "shadcn-vue/src/assets/index.css";
-// import { Button } from "shadcn-vue/src/components/ui/button";
+import { Button } from "shadcn-vue/src/components/ui/button";
 import SideMenu from "../components/SideMenu.vue";
 // import AlertSample from "../components/AlertSample.vue";
 // import Dashboard from "shadcn-vue/src/dashboard/Example.vue";
@@ -52,7 +52,7 @@ import ShowToast from "../components/ShowToast.vue";
 		<SideMenu client:load />
 		<RestaMenu client:load />
 
-		<ShowToast client:load />
+		<!-- <ShowToast client:load /> -->
 
 		<!-- <SampleSidebar client:load /> -->
 		<!-- <Sidebar2 client:load /> -->
@@ -68,5 +68,68 @@ import ShowToast from "../components/ShowToast.vue";
 		<!-- <AutoForm client:load /> -->
 
 		<ToasterContainer client:load />
+
+		<Button id="show-dialog-btn">Show Dialog from astro</Button>
+
+		<template id="dialog-template">
+			<div>Hello madafaka <Button class="close-btn">Close</Button></div>
+		</template>
+
+		<script>
+			import { useDialog } from "@/components/ui/dialog/use-dialog";
+			const dialog = useDialog();
+			const showDialogBtn = document.getElementById("show-dialog-btn");
+			showDialogBtn?.addEventListener("click", () => {
+				// console.log("showDialogBtn clicked state:", state);
+				const id = "dialog-1";
+				// let html = `<div id="${id}">Hello madafaka <button class="close-btn inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2">Close</button> </div>
+				// `;
+				const template =
+					document.querySelector<HTMLTemplateElement>("#dialog-template");
+				if (template) {
+					const htmlElem = template.content.cloneNode(true) as DocumentFragment;
+					// htmlElem;
+					htmlElem.querySelector("div")!.id = id;
+					console.log("html", htmlElem);
+
+					dialog.show({
+						id,
+						html: htmlElem.firstElementChild!.outerHTML,
+						closeable: false,
+						onSuccess: (result) => {
+							console.log("dialog closed with result:", result);
+						},
+					});
+					console.log("showDialogBtn clicked id:", id);
+
+					setTimeout(() => {
+						const dialogElem = document.querySelector(`#${id}`);
+						console.log("document.querySelector(`#${id}`)");
+						console.log(dialogElem);
+						dialogElem
+							?.querySelector(".close-btn")
+							?.addEventListener("click", () => {
+								dialog.close(id);
+							});
+
+						// const openedDialog = dialog.getDialog(id);
+						// openedDialog?.options.onSuccess?.("hello");
+						// dialog.close(id);
+
+						// console.log(
+						// 	"adding event listener to close-btn",
+						// 	document.querySelector(`#${id}`)
+						// );
+
+						// document
+						// 	.querySelector(`#${id} .close-btn`)
+						// 	?.addEventListener("click", () => {
+						// 		dialog.close(id);
+						// 	});
+					}, 1000);
+				}
+				// use template to clone and get html
+			});
+		</script>
 	</body>
 </html>
