@@ -10,13 +10,16 @@ export default defineConfig({
     resolve: {
       alias: {
         "@": fileURLToPath(
-          new URL("./node_modules/shadcn-vue/src", import.meta.url),
+          new URL("../../packages/shadcn-vue/src", import.meta.url),
         ),
       },
     },
   },
   integrations: [
-    vue(),
+    vue({
+      appEntrypoint: "./src/vue-main.ts",
+      devtools: true
+    }),
     tailwind({
       applyBaseStyles: false,
     }),

@@ -4,9 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "devDependencies": {
+    "@iconify-json/radix-icons": "^1.2.1",
+    "@iconify/vue": "^4.1.2",
     "@internationalized/date": "^3.5.5",
+    "@radix-icons/vue": "^1.0.0",
     "@types/node": "^20.11.24",
     "@vitejs/plugin-vue": "^5.1.4",
+    "@vueuse/core": "^11.2.0",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -18,14 +22,18 @@
     "typescript": "^5.6.3",
     "vite": "^5.4.10",
     "vue": "^3.5.12",
-    "vue-tsc": "^2.1.8"
+    "vue-tsc": "^2.1.8",
+    "@vue/tsconfig": "^0.5.1"
   },
   "dependencies": {
     "@unovis/ts": "^1.4.4",
     "@unovis/vue": "^1.4.4",
     "@vee-validate/zod": "^4.14.6",
-    "@vueuse/core": "^11.2.0",
+    "embla-carousel-vue": "^8.3.1",
+    "v-calendar": "^3.1.2",
+    "vaul-vue": "^0.2.0",
     "vee-validate": "^4.14.6",
+    "vue-sonner": "^1.2.5",
     "zod": "^3.23.8"
   }
 }

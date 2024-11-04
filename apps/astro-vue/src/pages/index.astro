@@ -1,9 +1,14 @@
 ---
 import "shadcn-vue/src/assets/index.css";
-import { Button } from "shadcn-vue/src/components/ui/button";
-import AlertSample from "../components/AlertSample.vue";
+// import { Button } from "shadcn-vue/src/components/ui/button";
+// import AlertSample from "../components/AlertSample.vue";
 import Dashboard from "shadcn-vue/src/dashboard/Example.vue";
-import AutoForm from "shadcn-vue/src/AutoForm/Example.vue";
+// import AutoForm from "shadcn-vue/src/AutoForm/Example.vue";
+import ModeToggle from "shadcn-vue/src/components/ui/ModeToggle.vue";
+import RestaMenu from "shadcn-vue/src/AutoForm/RestaMenu.vue";
+// import DatePickerSample from "../components/DatePickerSample.vue";
+import ToasterContainer from "../components/ToasterContainer.vue";
+import ShowToast from "../components/ShowToast.vue";
 ---
 
 <html lang="en">
@@ -13,12 +18,45 @@ import AutoForm from "shadcn-vue/src/AutoForm/Example.vue";
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
+		<script is:inline>
+			const getThemePreference = () => {
+				if (
+					typeof localStorage !== "undefined" &&
+					localStorage.getItem("theme")
+				) {
+					return localStorage.getItem("theme");
+				}
+				return window.matchMedia("(prefers-color-scheme: dark)").matches
+					? "dark"
+					: "light";
+			};
+			const isDark = getThemePreference() === "dark";
+			document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+			if (typeof localStorage !== "undefined") {
+				const observer = new MutationObserver(() => {
+					const isDark = document.documentElement.classList.contains("dark");
+					localStorage.setItem("theme", isDark ? "dark" : "light");
+				});
+				observer.observe(document.documentElement, {
+					attributes: true,
+					attributeFilter: ["class"],
+				});
+			}
+		</script>
 	</head>
 	<body>
+		<ToasterContainer client:load />
+		<ShowToast client:load />
+		<RestaMenu client:load />
+		<ModeToggle client:load />
+
+		<!-- <AlertSample client:load /> -->
+		<!-- <Button>Hello World</Button>
+		<DatePickerSample client:load /> -->
 		<!-- <h1>Astro</h1>
-    <Button>Hello World</Button>
     -->
-		<!-- <Dashboard client:load /> -->
-		<AutoForm client:load />
+		<Dashboard client:load />
+		<!-- <AutoForm client:load /> -->
 	</body>
 </html>
