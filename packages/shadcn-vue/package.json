@@ -10,6 +10,7 @@
     "@radix-icons/vue": "^1.0.0",
     "@types/node": "^20.11.24",
     "@vitejs/plugin-vue": "^5.1.4",
+    "@vue/tsconfig": "^0.5.1",
     "@vueuse/core": "^11.2.0",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.0",
@@ -22,8 +23,7 @@
     "typescript": "^5.6.3",
     "vite": "^5.4.10",
     "vue": "^3.5.12",
-    "vue-tsc": "^2.1.8",
-    "@vue/tsconfig": "^0.5.1"
+    "vue-tsc": "^2.1.8"
   },
   "dependencies": {
     "@unovis/ts": "^1.4.4",

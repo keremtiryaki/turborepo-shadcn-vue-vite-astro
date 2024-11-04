@@ -1,14 +1,17 @@
 ---
 import "shadcn-vue/src/assets/index.css";
 // import { Button } from "shadcn-vue/src/components/ui/button";
+import SideMenu from "../components/SideMenu.vue";
 // import AlertSample from "../components/AlertSample.vue";
-import Dashboard from "shadcn-vue/src/dashboard/Example.vue";
+// import Dashboard from "shadcn-vue/src/dashboard/Example.vue";
 // import AutoForm from "shadcn-vue/src/AutoForm/Example.vue";
-import ModeToggle from "shadcn-vue/src/components/ui/ModeToggle.vue";
+// import ModeToggle from "shadcn-vue/src/components/ui/ModeToggle.vue";
 import RestaMenu from "shadcn-vue/src/AutoForm/RestaMenu.vue";
+// import SampleSidebar from "shadcn-vue/src/AutoForm/SampleSidebar.vue";
+// import Sidebar2 from "shadcn-vue/src/AutoForm/Sidebar2.vue";
 // import DatePickerSample from "../components/DatePickerSample.vue";
 import ToasterContainer from "../components/ToasterContainer.vue";
-import ShowToast from "../components/ShowToast.vue";
+// import ShowToast from "../components/ShowToast.vue";
 ---
 
 <html lang="en">
@@ -47,16 +50,23 @@ import ShowToast from "../components/ShowToast.vue";
 	</head>
 	<body>
 		<ToasterContainer client:load />
-		<ShowToast client:load />
+
+		<SideMenu client:load />
 		<RestaMenu client:load />
-		<ModeToggle client:load />
+
+		<!-- <ShowToast client:load /> -->
+
+		<!-- <SampleSidebar client:load /> -->
+		<!-- <Sidebar2 client:load /> -->
+
+		<!-- <ModeToggle client:load /> -->
 
 		<!-- <AlertSample client:load /> -->
 		<!-- <Button>Hello World</Button>
 		<DatePickerSample client:load /> -->
 		<!-- <h1>Astro</h1>
     -->
-		<Dashboard client:load />
+		<!-- <Dashboard client:load /> -->
 		<!-- <AutoForm client:load /> -->
 	</body>
 </html>
