@@ -1,7 +1,9 @@
 import { Component, ref, markRaw } from "vue";
+import { defineComponent } from "vue";
 
 export interface DialogOptions {
   component?: Component;
+  html?: string;
   props?: Record<string, any>;
   title?: string;
   description?: string;
@@ -30,13 +32,26 @@ export function useDialog() {
   const show = (options: DialogOptions): string => {
     const id = `dialog-${Math.random().toString(36).substring(2, 15)}`;
 
+    function getComponent() {
+      let component: Component | undefined;
+      if (options.html) {
+        console.warn(`dialog html requires alias to be set in vite config, {"vite":{"resolve":{"alias":{"vue":"vue/dist/vue.esm-bundler.js"}}}}`);
+        component = defineComponent({
+          template: options.html,
+        });
+      } else if (options.component) {
+        component = options.component;
+      }
+      return component ? markRaw(component) : undefined;
+    }
+
     setTimeout(() => {
       state.value.dialogs.push({
         id,
         isOpen: true,
         options: {
           ...options,
-          component: options.component ? markRaw(options.component) : undefined,
+          component: getComponent(),
           onSuccess: (result) => {
             options.onSuccess?.(result);
           },
