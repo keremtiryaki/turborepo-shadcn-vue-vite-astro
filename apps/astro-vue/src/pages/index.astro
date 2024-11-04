@@ -5,13 +5,13 @@ import SideMenu from "../components/SideMenu.vue";
 // import AlertSample from "../components/AlertSample.vue";
 // import Dashboard from "shadcn-vue/src/dashboard/Example.vue";
 // import AutoForm from "shadcn-vue/src/AutoForm/Example.vue";
-// import ModeToggle from "shadcn-vue/src/components/ui/ModeToggle.vue";
+import ModeToggle from "shadcn-vue/src/components/ui/ModeToggle.vue";
 import RestaMenu from "shadcn-vue/src/AutoForm/RestaMenu.vue";
 // import SampleSidebar from "shadcn-vue/src/AutoForm/SampleSidebar.vue";
 // import Sidebar2 from "shadcn-vue/src/AutoForm/Sidebar2.vue";
 // import DatePickerSample from "../components/DatePickerSample.vue";
 import ToasterContainer from "../components/ToasterContainer.vue";
-import ShowToast from "../components/ShowToast.vue";
+// import ShowToast from "../components/ShowToast.vue";
 ---
 
 <html lang="en">
@@ -57,7 +57,7 @@ import ShowToast from "../components/ShowToast.vue";
 		<!-- <SampleSidebar client:load /> -->
 		<!-- <Sidebar2 client:load /> -->
 
-		<!-- <ModeToggle client:load /> -->
+		<ModeToggle client:load />
 
 		<!-- <AlertSample client:load /> -->
 		<!-- <Button>Hello World</Button>
@@ -84,7 +84,7 @@ import ShowToast from "../components/ShowToast.vue";
 
 			(window as any).store = store;
 			console.log("store", store);
-			(window as any).stop = subscribeToCount((newCount) => {
+			(window as any).stopSampleStore = subscribeToCount((newCount) => {
 				console.log("newCount", newCount);
 			});
 
