@@ -9,13 +9,17 @@ import {
 import { useDialog } from "./use-dialog";
 
 const { state, close, cancel } = useDialog();
+
+const handleUpdateOpen = (val: boolean) => {
+  if (!val && state.value.options?.closeable !== false) {
+    cancel();
+  }
+};
 </script>
 
 <template>
-  <Dialog :open="state.isOpen" @update:open="(val) => !val && cancel()">
-    <DialogContent
-      :class="{ 'cursor-pointer': state.options?.closeable !== false }"
-    >
+  <Dialog :open="state.isOpen" @update:open="handleUpdateOpen">
+    <DialogContent :closeable="state.options?.closeable">
       <DialogHeader v-if="state.options?.title || state.options?.description">
         <DialogTitle v-if="state.options?.title">
           {{ state.options.title }}

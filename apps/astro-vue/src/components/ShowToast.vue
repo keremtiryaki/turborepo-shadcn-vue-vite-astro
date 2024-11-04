@@ -15,12 +15,13 @@ const showDialog = async () => {
         // Props to pass to your component
         someData: "example",
       },
-      title: "Dialog Title",
+      title: "non closeable Dialog Title",
       description: "Optional description",
-      closeable: true, // default true
+      closeable: false, // default true
     });
     console.log("Dialog result:", result);
   } catch (err) {
+    console.error(err);
     console.log("Dialog cancelled");
   }
 };
