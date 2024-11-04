@@ -77,6 +77,17 @@ import ShowToast from "../components/ShowToast.vue";
 
 		<script>
 			import { useDialog } from "@/components/ui/dialog/use-dialog";
+			import {
+				store,
+				subscribeToCount,
+			} from "shadcn-vue/src/AutoForm/storeSample";
+
+			(window as any).store = store;
+			console.log("store", store);
+			(window as any).stop = subscribeToCount((newCount) => {
+				console.log("newCount", newCount);
+			});
+
 			const dialog = useDialog();
 			const showDialogBtn = document.getElementById("show-dialog-btn");
 			showDialogBtn?.addEventListener("click", () => {
