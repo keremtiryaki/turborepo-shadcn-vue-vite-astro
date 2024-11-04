@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Home, Inbox, Calendar, Settings, Search } from "lucide-vue-next";
-import { ref } from "vue";
 import {
   Sidebar,
   SidebarContent,
