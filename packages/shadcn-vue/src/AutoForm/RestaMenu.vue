@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { SearchIcon } from "lucide-vue-next";
 
+// why this not working while building?
 // const props = defineProps({
 //   menuItems: {
 //     type: Array,
@@ -32,7 +33,7 @@ import { SearchIcon } from "lucide-vue-next";
   }
 /*/
 
-const { menuItems = [] } = defineProps<{
+const { menuItems } = defineProps<{
   menuItems: {
     id: number;
     name: string;
