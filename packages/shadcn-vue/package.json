@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "scripts": {
+    "diff": "pnpx shadcn-vue@latest diff"
+  },
   "devDependencies": {
     "@iconify-json/radix-icons": "^1.2.1",
     "@iconify/vue": "^4.1.2",
