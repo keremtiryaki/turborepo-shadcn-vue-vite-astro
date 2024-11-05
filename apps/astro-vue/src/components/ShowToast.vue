@@ -2,8 +2,8 @@
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast/use-toast";
 import { useDialog } from "@/components/ui/dialog/use-dialog";
+import { store } from "shadcn-vue/src/AutoForm/storeSample";
 import SampleComponent from "./SampleComponent.vue";
-
 const { toast } = useToast();
 const dialog = useDialog();
 
@@ -47,20 +47,20 @@ const showDialog = async () => {
 </script>
 
 <template>
-  <Button
-    variant="outline"
-    @click="
-      () => {
-        console.log('toast', toast);
-        toast({
-          title: 'Uh oh! Something went wrong.',
-          description: 'There was a problem with your request.',
-          variant: 'destructive',
-        });
-      }
-    "
-  >
+  <Button variant="outline"
+          @click="() => {
+              console.log('toast', toast);
+              toast({
+                title: 'Uh oh! Something went wrong.',
+                description: 'There was a problem with your request.',
+                variant: 'destructive',
+              });
+            }
+            ">
     Show toast
   </Button>
   <Button @click="showDialog">Show dialog</Button>
+  <div>store toast: {{ store }}</div>
+  <Button @click="store.count--">-</Button>
+  <Button @click="store.count++">+</Button>
 </template>
