@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from "vue";
 import { Input } from "@/components/ui/input";
 import {
@@ -13,13 +13,35 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { SearchIcon } from "lucide-vue-next";
 
-const props = defineProps({
+// const props = defineProps({
+//   menuItems: {
+//     type: Array,
+//     required: true,
+//     default: () => [],
+//   },
+// });
+
+/*/
+{
+    "id": 1,
+    "name": "Classic Burger",
+    "description": "Juicy beef patty with fresh toppings",
+    "price": 9.99,
+    "category": 2,
+    "image": "/placeholder.svg?height=200&width=300"
+  }
+/*/
+
+const { menuItems = [] } = defineProps<{
   menuItems: {
-    type: Array,
-    required: true,
-    default: () => [],
-  },
-});
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+    category: number;
+    image: string;
+  }[]
+}>();
 
 // Categories data
 const categories = [
@@ -36,12 +58,12 @@ const categories = [
 const selectedCategory = ref(1);
 const searchQuery = ref("");
 
-const selectCategory = (categoryId) => {
+const selectCategory = (categoryId: number) => {
   selectedCategory.value = categoryId;
 };
 
 const filteredItems = computed(() => {
-  return props.menuItems.filter((item) => {
+  return menuItems.filter((item) => {
     const matchesCategory =
       selectedCategory.value === 1 || item.category === selectedCategory.value;
     const matchesSearch =
@@ -58,29 +80,24 @@ const filteredItems = computed(() => {
       <div class="container mx-auto px-4 py-4">
         <!-- Search Bar -->
         <div class="mb-4">
-          <Input
-            v-model="searchQuery"
-            placeholder="Search menu items..."
-            class="w-full"
-          >
-            <template #prefix>
-              <SearchIcon class="h-5 w-5 text-muted-foreground" />
-            </template>
+          <Input v-model="searchQuery"
+                 placeholder="Search menu items..."
+                 class="w-full">
+          <template #prefix>
+            <SearchIcon class="h-5 w-5 text-muted-foreground" />
+          </template>
           </Input>
         </div>
 
         <!-- Horizontal Category Menu -->
         <ScrollArea class="w-full whitespace-nowrap">
           <div class="flex space-x-2">
-            <Button
-              v-for="category in categories"
-              :key="category.id"
-              @click="selectCategory(category.id)"
-              :variant="
-                selectedCategory === category.id ? 'default' : 'outline'
-              "
-              class="rounded-full"
-            >
+            <Button v-for="category in categories"
+                    :key="category.id"
+                    @click="selectCategory(category.id)"
+                    :variant="selectedCategory === category.id ? 'default' : 'outline'
+                      "
+                    class="rounded-full">
               {{ category.name }}
             </Button>
           </div>
@@ -95,11 +112,9 @@ const filteredItems = computed(() => {
 
       <!-- Menu Items Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Card
-          v-for="item in filteredItems"
-          :key="item.id"
-          class="overflow-hidden"
-        >
+        <Card v-for="item in filteredItems"
+              :key="item.id"
+              class="overflow-hidden">
           <!-- <img :src="item.image" :alt="item.name" class="w-full h-48 object-cover" /> -->
           <CardHeader>
             <CardTitle>{{ item.name }}</CardTitle>
