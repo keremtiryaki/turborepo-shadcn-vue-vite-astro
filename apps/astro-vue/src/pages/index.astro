@@ -12,6 +12,7 @@ import RestaMenu from "shadcn-vue/src/AutoForm/RestaMenu.vue";
 // import DatePickerSample from "../components/DatePickerSample.vue";
 import ToasterContainer from "../components/ToasterContainer.vue";
 import ShowToast from "../components/ShowToast.vue";
+import menuData from "../components/menudata.json";
 ---
 
 <html lang="en">
@@ -50,7 +51,7 @@ import ShowToast from "../components/ShowToast.vue";
 	</head>
 	<body>
 		<SideMenu client:load />
-		<RestaMenu client:load />
+		<RestaMenu client:load menu-items={menuData} />
 
 		<ShowToast client:load />
 

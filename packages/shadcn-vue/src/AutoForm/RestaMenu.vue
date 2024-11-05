@@ -13,7 +13,15 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { SearchIcon } from "lucide-vue-next";
 
-// Sample data
+const props = defineProps({
+  menuItems: {
+    type: Array,
+    required: true,
+    default: () => [],
+  },
+});
+
+// Categories data
 const categories = [
   { id: 1, name: "All" },
   { id: 2, name: "Burgers" },
@@ -25,153 +33,6 @@ const categories = [
   { id: 8, name: "Sandwiches" },
 ];
 
-const menuItems = [
-  {
-    id: 1,
-    name: "Classic Burger",
-    description: "Juicy beef patty with fresh toppings",
-    price: 9.99,
-    category: 2,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: 2,
-    name: "Margherita Pizza",
-    description: "Traditional Italian pizza with tomato and mozzarella",
-    price: 12.99,
-    category: 3,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: 3,
-    name: "California Roll",
-    description: "Crab, avocado, and cucumber roll",
-    price: 8.99,
-    category: 4,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: 4,
-    name: "Chocolate Lava Cake",
-    description: "Warm chocolate cake with a gooey center",
-    price: 6.99,
-    category: 5,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: 5,
-    name: "Veggie Supreme Pizza",
-    description: "Loaded with fresh vegetables",
-    price: 14.99,
-    category: 3,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: 6,
-    name: "Spicy Tuna Roll",
-    description: "Tuna and spicy mayo roll",
-    price: 9.99,
-    category: 4,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: 7,
-    name: "Iced Latte",
-    description: "Espresso with cold milk and ice",
-    price: 4.99,
-    category: 6,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: 8,
-    name: "Caesar Salad",
-    description: "Crisp romaine lettuce with Caesar dressing",
-    price: 8.99,
-    category: 7,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: 9,
-    name: "Club Sandwich",
-    description: "Triple-decker with turkey, bacon, and veggies",
-    price: 10.99,
-    category: 8,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: 10,
-    name: "Classic Burger",
-    description: "Juicy beef patty with fresh toppings",
-    price: 9.99,
-    category: 2,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: 11,
-    name: "Margherita Pizza",
-    description: "Traditional Italian pizza with tomato and mozzarella",
-    price: 12.99,
-    category: 3,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: 12,
-    name: "California Roll",
-    description: "Crab, avocado, and cucumber roll",
-    price: 8.99,
-    category: 4,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: 13,
-    name: "Chocolate Lava Cake",
-    description: "Warm chocolate cake with a gooey center",
-    price: 6.99,
-    category: 5,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: 14,
-    name: "Veggie Supreme Pizza",
-    description: "Loaded with fresh vegetables",
-    price: 14.99,
-    category: 3,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: 15,
-    name: "Spicy Tuna Roll",
-    description: "Tuna and spicy mayo roll",
-    price: 9.99,
-    category: 4,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: 16,
-    name: "Iced Latte",
-    description: "Espresso with cold milk and ice",
-    price: 4.99,
-    category: 6,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: 17,
-    name: "Caesar Salad",
-    description: "Crisp romaine lettuce with Caesar dressing",
-    price: 8.99,
-    category: 7,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    id: 18,
-    name: "Club Sandwich",
-    description: "Triple-decker with turkey, bacon, and veggies",
-    price: 10.99,
-    category: 8,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-];
-
 const selectedCategory = ref(1);
 const searchQuery = ref("");
 
@@ -180,7 +41,7 @@ const selectCategory = (categoryId) => {
 };
 
 const filteredItems = computed(() => {
-  return menuItems.filter((item) => {
+  return props.menuItems.filter((item) => {
     const matchesCategory =
       selectedCategory.value === 1 || item.category === selectedCategory.value;
     const matchesSearch =
