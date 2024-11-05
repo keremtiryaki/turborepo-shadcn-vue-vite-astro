@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { SearchIcon } from "lucide-vue-next";
 
-// why this not working while building?
+// why this not working while building? 🥲
 // const props = defineProps({
 //   menuItems: {
 //     type: Array,
@@ -21,6 +21,20 @@ import { SearchIcon } from "lucide-vue-next";
 //     default: () => [],
 //   },
 // });
+
+// this one is working fine😑
+// interface MenuItem {
+//   id: number;
+//   name: string;
+//   description: string;
+//   price: number;
+//   category: number;
+//   image: string;
+// }
+
+// const props = defineProps<{
+//   menuItems: MenuItem[];
+// }>();
 
 /*/
 {
@@ -33,6 +47,7 @@ import { SearchIcon } from "lucide-vue-next";
   }
 /*/
 
+// this one is working fine 🥹
 const { menuItems } = defineProps<{
   menuItems: {
     id: number;
