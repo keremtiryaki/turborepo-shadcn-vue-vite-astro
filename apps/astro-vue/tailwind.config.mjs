@@ -8,4 +8,5 @@ export default {
     "./node_modules/shadcn-vue/src/**/*.{ts,tsx,vue}",
     // add ui packages path if required
   ],
+  // safelist: [{ pattern: /./ }] // means all classes are generated total: 11+ MB 🤣
 };
