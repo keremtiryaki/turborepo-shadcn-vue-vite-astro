@@ -1,0 +1,9 @@
+---
+import RestaMenu from "shadcn-vue/src/AutoForm/RestaMenu.vue";
+import menuData from "../components/menudata.json";
+import BaseLayout from "src/components/BaseLayout.astro";
+---
+
+<BaseLayout>
+	<RestaMenu client:load menuItems={menuData} />
+</BaseLayout>

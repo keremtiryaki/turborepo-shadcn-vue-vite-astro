@@ -1,20 +1,21 @@
 <script setup lang="ts">
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "shadcn-vue/src/components/ui/alert-dialog";
-import { Button } from "shadcn-vue/src/components/ui/button";
+import AutoForm from "shadcn-vue/src/AutoForm/Example.vue";
+// import {
+//   AlertDialog,
+//   AlertDialogAction,
+//   AlertDialogCancel,
+//   AlertDialogContent,
+//   AlertDialogDescription,
+//   AlertDialogFooter,
+//   AlertDialogHeader,
+//   AlertDialogTitle,
+//   AlertDialogTrigger,
+// } from "shadcn-vue/src/components/ui/alert-dialog";
+// import { Button } from "shadcn-vue/src/components/ui/button";
 </script>
 
 <template>
-  <AlertDialog>
+  <!-- <AlertDialog>
     <AlertDialogTrigger as-child>
       <Button variant="outline">Show Dialog</Button>
     </AlertDialogTrigger>
@@ -31,5 +32,6 @@ import { Button } from "shadcn-vue/src/components/ui/button";
         <AlertDialogAction>Continue</AlertDialogAction>
       </AlertDialogFooter>
     </AlertDialogContent>
-  </AlertDialog>
+  </AlertDialog> -->
+  <AutoForm />
 </template>
